@@ -7,20 +7,21 @@ const shortId = require("shortid");
 const createHttpError = require('http-errors');
 const mongoose = require('mongoose');
 const ShortUrlModel = require('./models/url') 
+const dotenv = require("dotenv")
+
+dotenv.config();
 
 const path = require('path');
  
 
 const app = express();
 
- 
-
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-mongoose.connect('mongodb://localhost:27017',{
+mongoose.connect(process.env.MONGODB_URL,{
   dbName:'url-shortner',
 
 }).then(()=>console.log("mongodb connected"))

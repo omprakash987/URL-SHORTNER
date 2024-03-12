@@ -10,7 +10,6 @@ const ShortUrlSchema = new Schema({
     shortId:{
         type:String,
         require:true,
-
     }
 
 })
